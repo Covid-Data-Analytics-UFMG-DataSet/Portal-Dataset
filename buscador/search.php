@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Astrid
+ * @package NOME_DO_SEU_TEMA
  */
 
 get_header(); ?>
