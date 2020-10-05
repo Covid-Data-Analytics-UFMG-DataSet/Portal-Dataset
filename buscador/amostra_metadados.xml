@@ -1,0 +1,22 @@
+<Arquivos>
+    <ID_Arquivo name="1">
+        <name name="Nome do arquivo">dados covid19 no brasil</name>
+        <type name="Tipo de arquivo">Dado</type>
+        <description name="Descri&#231;&#227;o do arquivo">Est&#227;o dispostos os dados de casos de infec&#231;&#227;o por SARS-CoV-2 no Brasil por semana. Al&#233;m disso, conta com os seguintes indicadores: casos/&#243;bitos aculmulados, preval&#234;ncia, mortalidade, letalidade, novos casos/novos &#243;bitos, incid&#234;ncia, fator de crescimento, transmissibilidade.</description>
+        <keywords name="Palavras-chave">dados covid, brasil, semana, casos, obitos aculmulados, prevalencia, mortalidade, letalidade, novos casos, novos obitos, incidencia, fator de crescimento, transmissibilidade</keywords>
+        <theme name="Tema">Covid-19</theme>
+        <publisher name="Publisher">Covid Data Analytics</publisher>
+        <creator name="Grupo">Grupo A</creator>
+        <team name="Subgrupo">Equipe 6</team>
+        <teamMembers name="Pessoas envolvidas no produto">Julia Fonseca de Sena, Gustavo dos Santos Alves Maria, Leandro Souza, Pedro Loures Alzamora</teamMembers>
+        <issued name="Carimbo de data/hora">2020-09-10 08:19:50.435000</issued>
+        <modified name="&#218;ltima atualiza&#231;&#227;o do arquivo">2020-09-07 00:00:00</modified>
+        <collectionDate name="Data de coleta">2020-08-23 00:00:00</collectionDate>
+        <startDate name="Data inicial">2020-02-23 00:00:00</startDate>
+        <endDate name="Data final">2020-08-01 00:00:00</endDate>
+        <spatial name="Local">brasil</spatial>
+        <source name="Fonte da Coleta">Brasil.io</source>
+        <language name="L&#237;ngua">en</language>
+        <url name="Subir Arquivo">https://drive.google.com/open?id=17g18oJAIcKPp3GrsnRGyry3OzNRrCvzU</url>
+    </ID_Arquivo>
+</Arquivos>

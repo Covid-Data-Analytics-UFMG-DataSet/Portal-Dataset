@@ -1,0 +1,44 @@
+// criar banco de dados
+
+CREATE DATABASE db_name;
+
+// usar banco de dados
+
+USE db_name;
+
+// criar usuário
+
+CREATE USER username;
+
+// dar acesso ao banco pelo usuário
+
+GRANT ALL ON db_name.* TO 'username'@'host' IDENTIFIED BY 'password';
+
+// criar tabela de metadados
+
+CREATE TABLE file_metadata (
+	file_id int not null auto_increment primary key,
+    file_name varchar(255) not null,
+    file_type varchar(255) not null,
+    file_description text not null,
+    file_keywords text not null,
+    file_theme varchar(255) not null,
+    file_publisher varchar(255) not null,
+    file_creator varchar(255) not null,
+    file_team varchar(255) not null,
+    file_team_members text not null,
+    file_issued date not null,
+    file_modified date not null,
+    file_collection_date date not null,
+    file_start_date date not null,
+    file_end_date date not null,
+    file_spatial varchar(255) not null,
+    file_source varchar(255) not null,
+    file_language varchar(255) not null,
+    file_url varchar(255) unique key not null
+)
+
+// inserir dados a partir de um arquivo XML, como o exemplo em buscador/amostra_metadados.xml
+
+LOAD XML LOCAL INFILE 'CAMINHO_PARA_XML/metadados.xml' 
+INTO TABLE file_metadata ROWS IDENTIFIED BY '<ID_Arquivo >'; 
