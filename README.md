@@ -103,7 +103,7 @@ Contudo, para que funcione, a estrutura do XML deve ser compatível com o exempl
 
 ### 4. Insira o CSS customizado
 
-No painel de administrador do seu site, instale o plugin Simple Custom CSS. Feito isso, acesse seus plugins e encontre o Simple Custom CSS. Nele, haverão duas opções: Ativar/Desativar e Adicionar CSS. Ative ele se estiver desativado e clique em Adicionar CSS. Agora, um editor de código CSS será aberto. Adicione nele o código CSS que pode ser encontrado em buscador/custom-css.css neste repositório.
+No painel de administrador do seu site, instale o plugin Simple Custom CSS. Feito isso, acesse seus plugins e encontre o Simple Custom CSS. Nele, haverá duas opções: Ativar/Desativar e Adicionar CSS. Ative ele se estiver desativado e clique em Adicionar CSS. Agora, um editor de código CSS será aberto. Adicione nele o código CSS que pode ser encontrado em buscador/custom-css.css neste repositório.
 
 # Metodologia
 
