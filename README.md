@@ -6,11 +6,27 @@ O Projeto COVID DATA ANALYTICS, idealizado no Departamento de Ciências da Compu
 
 O objetivo do projeto é disponibilizar informações confiáveis para a população sobre a pandemia e as suas consequências para a socioeconomia e saúde pública do Brasil.
 
+# Prerequisitos
+-Instalação de Wordpress, tema 
+-Ter accesso no banco de dados do Wordpress
+-Ter accesso a pasta de Wordpress
+-Conhecer as credencias de acesso e senhas do banco de dados do Wordpress
+
 # Passos de Instalação
 
-### 1. Crie o arquivo do buscador
+### 1. Clonar os arquivos do repositorio
+Clone os repositorios usando a descarga direta do site de git hub  ou usando o comando no terminal 
 
-No diretório raiz do seu site Wordpress, crie um arquivo buscador.php. Lá, cole o código que está em buscador/buscador.php neste repositório.
+```
+git clone https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset.git
+
+```
+*  precisa ter instalado git no seu computador
+
+### 2. Copiar arquivo buscador.php
+
+Ingresse na pasta buscador do repositorios clonado e copie o arquivo 'buscador.php'  no diretorio raiz onde seu wordpress foi instaldo. 
+
 
 ### 2. Altere o arquivo search.php
 
