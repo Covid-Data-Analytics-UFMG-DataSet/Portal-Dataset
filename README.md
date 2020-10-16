@@ -7,16 +7,16 @@ O Projeto COVID DATA ANALYTICS, idealizado no Departamento de Ciências da Compu
 O objetivo do projeto é disponibilizar informações confiáveis para a população sobre a pandemia e as suas consequências para a socioeconomia e saúde pública do Brasil.
 
 # Prerequisitos
--Instalação de Wordpress, tema 
+-Instalação de Wordpress, tema astrid
 -Ter accesso no banco de dados do Wordpress
 -Ter accesso a pasta de Wordpress
 -Conhecer as credencias de acesso e senhas do banco de dados do Wordpress
+* O tema pode ser outro diferente mas para o Portal será usado o astrid  
 
 # Passos de Instalação
 
 ### 1. Clonar os arquivos do repositorio
 Clone os repositorios usando a descarga direta do site de git hub  ou usando o comando no terminal 
-
 ```
 git clone https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset.git
 
@@ -26,44 +26,24 @@ git clone https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset.gi
 ### 2. Copiar arquivo buscador.php
 
 Ingresse na pasta buscador do repositorios clonado e copie o arquivo 'buscador.php'  no diretorio raiz onde seu wordpress foi instaldo. 
+![img](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/blob/master/images/Captura%20de%20pantalla%20de%202020-10-16%2018-26-59.png?raw=true) 
 
+### 3. Altere o arquivo search.php
 
-### 2. Altere o arquivo search.php
-
-No diretório raiz do seu site Wordpress, vá para wp-content/themes/NOME_DO_TEMA_QUE_VOCÊ_ESTÁ_USANDO/search.php, apague todo código lá e cole o código que está em buscador/search.php neste repositório.
-
-Nele, insira o nome do tema que você está usando em NOME_DO_SEU_TEMA:
-
-```
-
-<?php
-/**
- * The template for displaying search results pages.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package NOME_DO_SEU_TEMA
- */
-
-get_header(); ?>
-```
-
-E as credenciais do seu banco de dados:
+Ingresse na pasta buscador do repositorios clonado e copie o arquivo 'search.php', no diretório raiz do seu site Wordpress, vá para ```wp-content/themes/astrid/search.php```, apague e cole o arquivo. 
+Ingresse no arquivo ``` wp-content/themes/astrid/search.php ```usando o editor de texto e digite as credenciais do seu banco de dados nos campos indicados a continuação:
 
 ```
-
 $host = "yourhost";
 $user = "youruser";
 $password = "yourpass";
 $database = "yourdb";
 ```
-
 ### 3. Estruture o banco de dados
 
-Dentro do editor do seu banco de dados, execute o código abaixo para criar a tabela file_metadata, que está sendo consumida pelo buscador
+Dentro do editor do seu banco de dados, execute o código abaixo para criar a tabela ```file_metadata``` que será consumida pelo buscador
 
 ```
-
 CREATE TABLE file_metadata (
 	  file_id int not null auto_increment primary key,
     file_name varchar(255) not null,
@@ -86,10 +66,20 @@ CREATE TABLE file_metadata (
     file_url varchar(255) unique key not null
 );
 ```
-
 Essa tabela tem a seguinte estrutura:
 
-![DER](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/tree/master/images/DER.png)
+![img](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/blob/master/images/DER.png?raw=true)
+
+### 4. Ingresse os dados no banco de dados
+Ingresse na pasta buscador do repositorios clonado e ubique o arquivo ```datasetCDA.sql```  ingresse no banco de dados e se ubique na tabela ```file_metadata``` se esta usando o visor de banco de dados ![img](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.programaenlinea.net%2Fcomo-instalar-phpmyadmin-en-linux%2F&psig=AOvVaw0TCEI4fdJIUWjC3QRnTcB8&ust=1602974441187000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKDFp6SXuuwCFQAAAAAdAAAAABAD) pode ingressar no menu de importação e anexar o arquivo, Wordpress  ![img](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/blob/master/images/banco-dados.png?raw=true) e depois oprimir continuar.  
+
+O banco de dados já esta com os dados prontos para ser usados.   Ir diretamente para o passo (5. Insira o CSS customizado_).
+
+### 4.1 Atualice o banco de dados
+
+Ingresse na pasta buscador do repositorios clonado e ubique o arquivo ```datasetCDA.sql``` Para atualizar o banco de dados,  ingresse no gestor do banco de dados e apague a tabela ```file_metadata```  usando o comando ```drop table file_metadata``` Seguidamente realice os passos  (3. Estruture o banco de dados e 4. Ingresse os dados no banco de dados)  para este passo utilice o arquivo ```update-datasetCDA.sql```.
+
+### 4.2 alternativa XML para preencher o Banco de dados
 
 Caso queira preencher o banco por meio de um arquivo XML, é possível fazê-lo por meio do script neste repositório em buscador/inserir_XML_bd.py. Apenas substitua 'CAMINHO_PARA_ARQUIVO' pelo caminho, a partir da pasta raíz do seu computador, até o seu arquivo XML:
 
@@ -117,9 +107,11 @@ py CAMINHO_PARA_ARQUIVO/inserir_XML_bd.py
 
 Contudo, para que funcione, a estrutura do XML deve ser compatível com o exemplo em buscador/amostra_metadados.xml.
 
-### 4. Insira o CSS customizado
+### 5. Insira o CSS customizado
 
-No painel de administrador do seu site, instale o plugin Simple Custom CSS. Feito isso, acesse seus plugins e encontre o Simple Custom CSS. Nele, haverá duas opções: Ativar/Desativar e Adicionar CSS. Ative ele se estiver desativado e clique em Adicionar CSS. Agora, um editor de código CSS será aberto. Adicione nele o código CSS que pode ser encontrado em buscador/custom-css.css neste repositório.
+No painel de administrador do seu site Wordpress ingresse na seção Plugins  procure e instale o plugin Simple Custom CSS.  ![img](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/blob/master/images/Simple%20Custom%20CSS.png?raw=true) Feito isso, acesse seus plugins e encontre o Simple Custom CSS. Nele, haverá duas opções: Ativar/Desativar e Adicionar CSS. Ative ele se estiver desativado e clique em Adicionar CSS. Agora, um editor de código CSS será aberto. Adicione nele o código CSS que pode ser encontrado no repositorio clonado na ubicação ```buscador/custom-css.css``` neste repositório.  
+
+Para verificar que o sistema esta funcionando ingresse no endereçõ http://covid.dcc.ufmg.br/buscador.php  e realice a busca covid.  deverão aparecer diferentes resutaldos. 
 
 # Metodologia
 
