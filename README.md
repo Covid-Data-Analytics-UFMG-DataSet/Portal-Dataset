@@ -109,9 +109,13 @@ Contudo, para que funcione, a estrutura do XML deve ser compatível com o exempl
 
 ### 5. Insira o CSS customizado
 
-No painel de administrador do seu site Wordpress ingresse na seção Plugins  procure e instale o plugin Simple Custom CSS.  ![img](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/blob/master/images/Simple%20Custom%20CSS.png?raw=true) Feito isso, acesse seus plugins e encontre o Simple Custom CSS. Nele, haverá duas opções: Ativar/Desativar e Adicionar CSS. Ative ele se estiver desativado e clique em Adicionar CSS. Agora, um editor de código CSS será aberto. Adicione nele o código CSS que pode ser encontrado no repositorio clonado na ubicação ```buscador/custom-css.css``` neste repositório.  
+No painel de administrador do seu site Wordpress ingresse na seção Plugins  procure e instale o plugin Simple Custom CSS.  ![img](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/blob/master/images/Simple%20Custom%20CSS.png?raw=true) Feito isso, acesse seus plugins e encontre o Simple Custom CSS. Nele, haverá duas opções: Ativar/Desativar e Adicionar CSS. Ative ele se estiver desativado e clique em Adicionar CSS. ![img](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/blob/master/images/css-adicionar.png?raw=true) Agora, um editor de código CSS será aberto. Adicione nele o código CSS que pode ser encontrado no repositorio clonado na ubicação ```buscador/custom-css.css``` neste repositório.  
 
 Para verificar que o sistema esta funcionando ingresse no endereçõ http://covid.dcc.ufmg.br/buscador.php  e realice a busca covid.  deverão aparecer diferentes resutaldos. 
+![img](https://github.com/Covid-Data-Analytics-UFMG-DataSet/Portal_Dataset/blob/master/images/buscador.png?raw=true)
+
+
+
 
 # Metodologia
 
