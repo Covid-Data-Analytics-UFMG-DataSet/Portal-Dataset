@@ -14,61 +14,85 @@ get_header(); ?>
 
 		<?php
 
+		$filter = $_GET['filter'];
+		$serch = $_GET['search'];
+
+		$select = null;
+
+		if($filter === 'tipo'):
+			$select = $_GET['tipo'];
+		elseif($filter === 'fonte'):
+			$select = $_GET['fonte'];
+		elseif($filter === 'tema'):
+			$select = $_GET['tema'];
+		endif;
+
 		if($_GET['buscador'] === 'buscador'): ?>
 			<div class="search-results-container">
 				<?php
-					if(!$_GET['filter']):
+					if((!$filter || !$select) && !$search):
 						?>
-							<h1 class="u-margin-bottom-small custom-h1">Nenhum filtro selecionado!</h1>
-						<?php
-					elseif(!$_GET['search']):
-						?>
-							<h1 class="u-margin-bottom-small custom-h1">Campo de pesquisa não preenchido!</h1>
+							<h1 class="u-margin-bottom-small custom-h1">Nenhum campo preenchido!</h1>
 						<?php
 					else:
 						?>
-							<h1 class="u-margin-bottom-small custom-h1">Resultados para <?php echo $_GET['filter'];?>: <?php echo $_GET['search'];?> </h1>
-
+							<h1>Resultados</h1>
 						<?php
 
-							$host = "yourhost";
-							$user = "youruser";
-							$password = "yourpass";
-							$database = "yourdb";
+						$host = "yourhost";
+						$user = "youruser";
+						$password = "yourpass";
+						$database = "yourdb";
 
-							// Create connection
-							$portal_data_set = new wpdb($user, $password, $database, $host);
+						// Create connection
+						$portal_data_set = new wpdb($user, $password, $database, $host);
 
-							try{
-								$tags = array_values(array_filter(explode(' ', $_GET['search'])));
+						try{
+							$tags = array_values(array_filter(explode(' ', $search)));
 
-								$query = "";
+							$query = "SELECT * FROM file_metadata WHERE ";
 
-								$index = 0;
+							$index = 0;
 
-								$column = "";
+							$column = "";
 
-								if($_GET["filter"] === "assuntos"):
-									$column = "file_keywords";
-								elseif($_GET["filter"] === "fonte"): 
-									$column = "file_source";
-								endif;
+							if($_GET["filter"] === "tipo"):
+								$column = "file_type";
+							elseif($_GET["filter"] === "fonte"): 
+								$column = "file_source";
+							elseif($_GET["filter"] === "tema"): 
+								$column = "file_theme";
+							endif;
 
-								if(sizeof($tags) > 0):
-									while($index < sizeof($tags)):
-										if($index === 0):
-											$query = "SELECT * FROM file_metadata WHERE ".$column." LIKE '%".$tags[$index]."%'";
+							if(sizeof($tags) > 0):
+								while($index < sizeof($tags)):
+									if($index === 0):
+										if(sizeof($tags) === 1):
+											$query .= "(file_keywords LIKE '%".$tags[$index]."%' OR file_name LIKE '%".$tags[$index]."%')";
 										else:
-											$query.= " OR ".$column." LIKE '%".$tags[$index]."%'";
+											$query .= "(file_keywords LIKE '%".$tags[$index]."%' OR file_name LIKE '%".$tags[$index]."%'";
 										endif;
+									elseif($index === sizeof($tags) - 1):
+										$query.= " OR file_keywords LIKE '%".$tags[$index]."%' OR file_name LIKE '%".$tags[$index]."%')";
+									else:
+										$query.= " OR file_keywords LIKE '%".$tags[$index]."%' OR file_name LIKE '%".$tags[$index]."%'";
+									endif;
 
-										$index++;
-									endwhile;
+									$index++;
+								endwhile;
+
+								if($filter && $select):
+									$query .= " AND ".$column." = '".$select."'";
 								endif;
+							else:
+								if($filter && $select):
+									$query .= "".$column." = '".$select."'";
+								endif;
+							endif;
+							
+							$results = $portal_data_set->get_results($query);
 
-								$results = $portal_data_set->get_results($query);
-
-								$index = 0;
+							$index = 0;
 
 								if($results && sizeof($results) > 0):
 									while ($index < sizeof($results)):?>
@@ -93,6 +117,10 @@ get_header(); ?>
 												<div class="buscador__item-tertiary--label">Palavras-chave:</div>
 												<div class="buscador__item-tertiary--text"><?php echo $results[$index]->file_keywords; ?></div>
 											</div>
+											<div class="buscador__item-tertiary">
+												<div class="buscador__item-tertiary--label">Descrição:</div>
+												<div class="buscador__item-tertiary--text"><?php echo $results[$index]->file_description; ?></div>
+											</div>
 										</div>
 										<?php
 										$index++;
@@ -100,9 +128,10 @@ get_header(); ?>
 								else:
 									echo 'Nenhum resultado encontrado!';
 								endif;
-							}catch(Exception $e){
-								echo 'Error'.$e->getMessage();
-							}
+							
+						}catch(Exception $e){
+							echo 'Error'.$e->getMessage();
+						}
 					endif;
 				?>
 				

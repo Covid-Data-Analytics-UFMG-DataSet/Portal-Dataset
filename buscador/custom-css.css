@@ -52,6 +52,7 @@
 
 .buscador__item-tertiary {
   display: flex;
+  flex-direction: column;
   font-size: 1.6rem;
   color: #a9a9a9;
 }
@@ -176,4 +177,8 @@
   .custom-form__input-box {
     min-height: 100%;
   }
+}
+
+.custom-form__select {
+  display: none;
 }
