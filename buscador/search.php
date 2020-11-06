@@ -1,4 +1,6 @@
 <?php
+	include 'connection.php';
+
 /**
  * The template for displaying search results pages.
  *
@@ -38,14 +40,6 @@ get_header(); ?>
 						?>
 							<h1>Resultados</h1>
 						<?php
-
-						$host = "yourhost";
-						$user = "youruser";
-						$password = "yourpass";
-						$database = "yourdb";
-
-						// Create connection
-						$portal_data_set = new wpdb($user, $password, $database, $host);
 
 						try{
 							$tags = array_values(array_filter(explode(' ', $search)));

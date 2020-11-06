@@ -6,6 +6,8 @@
 
 require_once('wp-load.php');
 
+include './wp-content/themes/astrid/connection.php';
+
 get_header(); ?>
 
             <div class="custom-container">
@@ -29,13 +31,6 @@ get_header(); ?>
                         <select class="custom-form__select" name="tipo" id="custom-select-type">
                             <option class="custom-form__select-disabled" value="" selected>Tipo</option>
                             <?php
-                                $host = "yourhost";
-                                $user = "youruser";
-                                $password = "yourpass";
-                                $database = "yourdb";
-
-                                // Create connection
-                                $portal_data_set = new wpdb($user, $password, $database, $host);
 
                                 $query = "SELECT DISTINCT file_type FROM file_metadata";
 
@@ -55,13 +50,6 @@ get_header(); ?>
                         <select class="custom-form__select" name="fonte" id="custom-select-source">
                             <option class="custom-form__select-disabled" value="" selected>Fonte</option>
                             <?php
-                                $host = "yourhost";
-                                $user = "youruser";
-                                $password = "yourpass";
-                                $database = "yourdb";
-
-                                // Create connection
-                                $portal_data_set = new wpdb($user, $password, $database, $host);
 
                                 $query = "SELECT DISTINCT file_source FROM file_metadata";
 
@@ -81,13 +69,6 @@ get_header(); ?>
                         <select class="custom-form__select" name="tema" id="custom-select-theme">
                             <option class="custom-form__select-disabled" value="" selected>Tema</option>
                             <?php
-                                $host = "yourhost";
-                                $user = "youruser";
-                                $password = "yourpass";
-                                $database = "yourdb";
-
-                                // Create connection
-                                $portal_data_set = new wpdb($user, $password, $database, $host);
 
                                 $query = "SELECT DISTINCT file_theme FROM file_metadata";
 
